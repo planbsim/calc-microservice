@@ -14,6 +14,11 @@ build:
         name: publish
         code: |
           dotnet publish ./WebCalculator.Api/ -o publish
+    - script:
+        name: copy binary
+        code: |
+          cp -r . $WERCKER_OUTPUT_DIR 
+          cd $WERCKER_OUTPUT_DIR
 deploy:
   box: microsoft/aspnetcore:2.0
   steps:
@@ -25,8 +30,7 @@ deploy:
         password: $GCP_KEY_JSON
         repository: $GCR_TAG
         registry: $GCR_HOST
-        cmd: dotnet WebCalculator.Api.dll
-        entrypoint: /pipeline/source/publish
+        entrypoint: "/pipeline/source/docker_entrypoint.sh"
 deploy-to-kubernetes:
     steps:
 
