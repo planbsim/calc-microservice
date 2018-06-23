@@ -20,7 +20,6 @@ build:
           cp -r . $WERCKER_OUTPUT_DIR 
           cd $WERCKER_OUTPUT_DIR
 deploy:
-  box: microsoft/aspnetcore:2.0
   steps:
     - internal/docker-push:
         working-dir: $WERCKER_ROOT
@@ -30,7 +29,7 @@ deploy:
         password: $GCP_KEY_JSON
         repository: $GCR_TAG
         registry: $GCR_HOST
-        entrypoint: "/pipeline/source/docker_entrypoint.sh"
+        entrypoint: "docker_entrypoint.sh"
 deploy-to-kubernetes:
     steps:
 
