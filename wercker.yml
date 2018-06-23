@@ -14,13 +14,6 @@ build:
         name: publish
         code: |
           dotnet publish ./WebCalculator.Api/ -o publish
-    - script:
-        name: copy binary
-        code: |
-          cp -r . $WERCKER_OUTPUT_DIR 
-          cd $WERCKER_OUTPUT_DIR
-deploy:
-  steps:
     - internal/docker-push:
         working-dir: $WERCKER_ROOT
         tag: $WERCKER_GIT_COMMIT
@@ -29,7 +22,7 @@ deploy:
         password: $GCP_KEY_JSON
         repository: $GCR_TAG
         registry: $GCR_HOST
-        entrypoint: /bin/bash
+        entrypoint: docker_entrypoint.sh
 deploy-to-kubernetes:
     steps:
 
