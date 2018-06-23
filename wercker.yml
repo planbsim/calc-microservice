@@ -13,12 +13,7 @@ build:
     - script:
         name: publish
         code: |
-          dotnet publish  ./WebCalculator.Api/ -o publish	 
-    - script:
-        name: copy binary
-        code: |
-          cp -r . $WERCKER_OUTPUT_DIR/app 
-          cd $WERCKER_OUTPUT_DIR/app
+          dotnet publish ./WebCalculator.Api/ -o publish
 deploy:
   box: microsoft/aspnetcore:2.0
   steps:
@@ -31,7 +26,7 @@ deploy:
         repository: $GCR_TAG
         registry: $GCR_HOST
         cmd: dotnet WebCalculator.Api.dll
-        entrypoint: /pipeline/source/app
+        entrypoint: $WERCKER_OUTPUT_DIR/publish
 deploy-to-kubernetes:
     steps:
 
@@ -47,7 +42,7 @@ deploy-to-kubernetes:
         name: Prepare Kubernetes files
         code: |
           mkdir $WERCKER_OUTPUT_DIR/kubernetes
-          mv /pipeline/source/app/kubernetes_*.yml $WERCKER_OUTPUT_DIR/kubernetes
+          mv kubernetes_*.yml $WERCKER_OUTPUT_DIR/kubernetes
     # Since we're using GKE, we'll use a fork of the kubectl step that supports
     # GKE service account authentication. We need to pass some GKE specific configuration
     # to ensure we can authenticate, then point kubectl at the directory containing our
