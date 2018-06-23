@@ -1,0 +1,28 @@
+# This template file will have its environment variables expanded
+# and the .template extension removed by the bash-template Wercker step.
+# See wercker.yml.
+
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: calc-coco2
+  labels:
+    commit: ${WERCKER_GIT_COMMIT}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: calc-coco2
+  template:
+    metadata:
+      labels:
+        app: calc-coco2
+        commit: ${WERCKER_GIT_COMMIT}
+    spec:
+      containers:
+      - name: calc-coco2-aspnetcore-2.0
+        image: ${GCR_TAG}:${WERCKER_GIT_COMMIT}
+        ports:
+        - name: calc-coco2-aspnetcore-2.0
+          containerPort: 80
+          protocol: TCP
