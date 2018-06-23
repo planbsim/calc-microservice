@@ -26,7 +26,7 @@ deploy:
         repository: $GCR_TAG
         registry: $GCR_HOST
         cmd: dotnet WebCalculator.Api.dll
-        entrypoint: $WERCKER_OUTPUT_DIR/publish
+        entrypoint: /pipeline/source/publish
 deploy-to-kubernetes:
     steps:
 
