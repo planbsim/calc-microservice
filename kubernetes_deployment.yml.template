@@ -20,9 +20,9 @@ spec:
         commit: ${WERCKER_GIT_COMMIT}
     spec:
       containers:
-      - name: calc-coco2-aspnetcore-2.0
+      - name: calc-coco2
         image: ${GCR_TAG}:${WERCKER_GIT_COMMIT}
         ports:
-        - name: calc-coco2-aspnetcore-2.0
+        - name: calc-coco2
           containerPort: 80
           protocol: TCP
