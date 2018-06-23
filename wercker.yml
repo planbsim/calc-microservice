@@ -5,15 +5,15 @@ build:
     - script:
         name: restore
         code: |
-          dotnet restore
+          dotnet restore ./WebCalculator.Api/
     - script:
         name: build
         code: |
-          dotnet build
+          dotnet build ./WebCalculator.Api/
     - script:
         name: publish
         code: |
-          dotnet publish -o publish	 
+          dotnet publish  ./WebCalculator.Api/ -o publish	 
     - script:
         name: copy binary
         code: |
