@@ -35,12 +35,12 @@ namespace WebCalculator.Calculation.Coco2
             }
         }
 
-        public static int Multiplication(int multiplier, int mulitiplicand)
+        public static int Multiplication(int multiplier, int multiplicand)
         {
             using (var addClient = new HttpClient() { BaseAddress = uriMultiClient })
             {
                 HttpResponseMessage response = addClient
-                    .PostAsJsonAsync("/", new { multiplier = multiplier, mulitiplicand = mulitiplicand }).Result;
+                    .PostAsJsonAsync("/", new { multiplier = multiplier, multiplicand = multiplicand }).Result;
                 string contentResult = response.Content.ReadAsStringAsync().Result;
                 JObject result = JObject.Parse(contentResult);
                 return result.Value<int>("result");
