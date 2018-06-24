@@ -1,12 +1,21 @@
 ﻿using System;
 using System.IO;
+using WebCalculator.Calculation.Coco2;
 using Lex = CalcLex;
 using Syn = CalcSyn;
 
 namespace WebCalculator.Calculation.Service.Coco2
 {
-    public class Calculator : ICalculator
+    public class DistributedCalculator : ICalculator
     {
+        public DistributedCalculator(Uri add, Uri sub, Uri multi, Uri div)
+        {
+            ArithmeticOperations.uriAddClient = add;
+            ArithmeticOperations.uriSubClient = sub;
+            ArithmeticOperations.uriMultiClient = multi;
+            ArithmeticOperations.uriDivClient = div;
+        }
+
         public int Calculate(string expression)
         {
             int result = 0;

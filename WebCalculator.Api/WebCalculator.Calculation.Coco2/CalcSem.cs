@@ -37,26 +37,26 @@ public class CalcSem {
 
     public static int LastCalcResult = 0;
     // addition
-  public static int Add(int a, int b) {
-        return Arithmetic.Addition(a, b);
-  }
+      public static int Add(int a, int b) {
+            return ArithmeticOperations.Addition(a, b);
+      }
   
-  // substraction
-  public static int Sub(int a, int b) {
-    return a - b;
-  }
+      // substraction
+      public static int Sub(int a, int b) {
+            return ArithmeticOperations.Substraction(a, b);
+        }
   
-  // multiplication
-  public static int Mult(int a, int b) {
-    return a * b;
-  }
+      // multiplication
+      public static int Mult(int a, int b) {
+            return ArithmeticOperations.Multiplication(a, b);
+        }
   
-  // division
-  public static int Div(int a, int b) {
-    return a / b;
-  }
+      // division
+      public static int Div(int a, int b) {
+            return ArithmeticOperations.Division(a, b);
+        }
 
-  // *** end of global SYN and SEM declarations from ATG ***
+      // *** end of global SYN and SEM declarations from ATG ***
 
   
 

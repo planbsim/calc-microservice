@@ -28,7 +28,11 @@ namespace WebCalculator.Api
             services.AddMvc();
             services.AddScoped<ICalculator>(provider =>
             {
-                return new Calculator();
+                return new DistributedCalculator(
+                    new Uri(Configuration["uriAddClient"]),
+                    new Uri(Configuration["uriSubClient"]),
+                    new Uri(Configuration["uriMultiClient"]),
+                    new Uri(Configuration["uriDivClient"]));
             });
         }
 
