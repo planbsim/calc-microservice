@@ -19,7 +19,7 @@ namespace WebCalculator.Api.Controllers
         }
 
         // GET api/calculate/(6+5)
-        [HttpGet("{expression}")]
+        [HttpGet("{*expression}")]
         public ResultViewModel Get(string expression)
         {
             return new ResultViewModel()
