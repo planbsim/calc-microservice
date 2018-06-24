@@ -14,6 +14,9 @@ build:
         name: publish
         code: |
           dotnet publish ./WebCalculator.Api/ -o publish
+deploy:
+  box: microsoft/aspnetcore:2.0
+  steps:
     - script:
         name: chmod
         code: |
