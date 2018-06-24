@@ -16,9 +16,9 @@ namespace WebCalculator.Calculation.Coco2
         static Arithmetic()
         {
             addClientUri = new Uri(@"http://add:8080");
-            addClientUri = new Uri(@"http://sub:8080");
-            addClientUri = new Uri(@"http://multi:8080");
-            addClientUri = new Uri(@"http://div:8080");
+            subClientUri = new Uri(@"http://sub:8080");
+            multiClientUri = new Uri(@"http://multi:8080");
+            divClientUri = new Uri(@"http://div:8080");
         }
 
         public static int Addition(int augend, int addend)
